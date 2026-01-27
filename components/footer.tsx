@@ -7,7 +7,7 @@ const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/aurenza.designstudio?igsh=MTBnbXhhcGd6ODhyag%3D%3D", label: "Instagram" },
 ];
 
 const quickLinks = [
@@ -77,20 +77,20 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-0.5 opacity-80" />
                 <span className="text-sm opacity-80 leading-relaxed">
-                  Plot No. 123, Banjara Hills,<br />
-                  Hyderabad, Telangana - 500034
+                  Jubilee enclave,  Hitec city,<br />
+                  Hyderabad, Telangana - 500081
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 opacity-80" />
                 <a href="tel:+918341012026" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all duration-300">
-                  +91 83410 12026
+                  +91 851198 07011
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 opacity-80" />
-                <a href="mailto:info@aurenzadesign.com" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all duration-300">
-                  info@aurenzadesign.com
+                <a href="mailto:saisumanth2310@gmail.com" className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all duration-300">
+                  saisumanth2310@gmail.com
                 </a>
               </li>
             </ul>
@@ -102,15 +102,15 @@ export default function Footer() {
             <ul className="space-y-3 text-sm opacity-80">
               <li className="flex justify-between">
                 <span>Monday - Friday</span>
-                <span>9:00 AM - 7:00 PM</span>
+                <span>10:00 AM - 7:00 PM</span>
               </li>
               <li className="flex justify-between">
                 <span>Saturday</span>
-                <span>10:00 AM - 5:00 PM</span>
+                <span>10:00 AM - 7:00 PM</span>
               </li>
               <li className="flex justify-between">
                 <span>Sunday</span>
-                <span>Closed</span>
+                <span>10:00 AM - 7:00 PM</span>
               </li>
             </ul>
           </div>

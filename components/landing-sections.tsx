@@ -297,31 +297,31 @@ const projects = [
     id: "villa-modern",
     title: "Modern Luxury Villa",
     category: "Residential",
-    image: "/projects/p1.jpg",
+    image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522157/WhatsApp_Image_2026-01-26_at_21.55.05_jjun5j.jpg",
   },
   {
     id: "office-space",
     title: "Corporate Office Space",
     category: "Commercial",
-    image: "/projects/p2.jpg",
+    image: "https://www.chalkstudio.design/_next/image?url=https%3A%2F%2Fd16yta572p663f.cloudfront.net%2FInnovative_Ways_to_Increase_Productivity_in_Corporate_Office_Interior_Design_webp_bd669d19c9.webp&w=3840&q=100",
   },
   {
     id: "modular-kitchen",
     title: "Modular Kitchen Design",
     category: "Kitchen",
-    image: "/projects/p3.jpg",
+    image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521874/WhatsApp_Image_2026-01-26_at_21.54.52_1_m56m7q.jpg",
   },
   {
     id: "bedroom-suite",
     title: "Luxury Bedroom Suite",
     category: "Bedroom",
-    image: "/projects/p4.jpg",
+    image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521866/WhatsApp_Image_2026-01-26_at_21.54.19_1_k9fhce.jpg",
   },
   {
     id: "living-room",
     title: "Elegant Living Room",
     category: "Living Room",
-    image: "/projects/p5.jpg",
+    image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521870/WhatsApp_Image_2026-01-26_at_21.54.50_1_clrix4.jpg",
   },
 ];
 

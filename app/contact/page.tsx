@@ -17,19 +17,19 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+91 83410 12026", "+91 40 2355 1234"],
-    links: ["tel:+918341012026", "tel:+914023551234"],
+    details: ["+91 851198 07011"],
+    links: ["tel:851198 07011"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@aurenzadesign.com", "projects@aurenzadesign.com"],
-    links: ["mailto:info@aurenzadesign.com", "mailto:projects@aurenzadesign.com"],
+    details: [" saisumanth2310@gmail.com"],
+    links: ["mailto: saisumanth2310@gmail.com"],
   },
   {
     icon: Clock,
     title: "Working Hours",
-    details: ["Mon - Fri: 9:00 AM - 7:00 PM", "Saturday: 10:00 AM - 5:00 PM"],
+    details: ["Mon - Fri: 10:00 AM - 7:00 PM", "Sat-Sun: 10:00 AM - 7:00 PM"],
   },
 ];
 
@@ -37,7 +37,7 @@ const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/aurenza.designstudio?igsh=MTBnbXhhcGd6ODhyag%3D%3D", label: "Instagram" },
 ];
 
 export default function ContactPage() {
@@ -55,21 +55,37 @@ export default function ContactPage() {
   useEffect(() => {
     setIsHeaderVisible(true);
   }, []);
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    
-    // Reset submitted state after 3 seconds
-    setTimeout(() => setSubmitted(false), 3000);
-  };
+  const { name, email, phone, subject, message } = formData;
+
+  const whatsappNumber = "918519807011"; // without + and spaces
+
+  const whatsappMessage = `
+New Contact Enquiry from Website
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service: ${subject}
+
+Message:
+${message}
+`;
+
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  window.open(whatsappURL, "_blank");
+
+  // optional UI reset
+  setSubmitted(true);
+  setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+  setTimeout(() => setSubmitted(false), 3000);
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -292,7 +308,7 @@ export default function ContactPage() {
           <div className="text-center">
             <MapPin className="w-12 h-12 text-accent mx-auto mb-4" />
             <p className="text-primary-foreground/70">
-              Plot No. 123, Banjara Hills, Hyderabad, Telangana - 500034
+              Jubilee enclave,  Hitec city, Hyderabad, Telangana - 500081
             </p>
           </div>
         </div>
