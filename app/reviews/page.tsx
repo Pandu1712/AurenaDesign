@@ -99,7 +99,8 @@ export default function ReviewsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header variant="light" />
+      <Header />
+
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-secondary">

@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { spaces } from "@/lib/projects-data";
 
 export default function SpaceDetailPage() {
@@ -15,22 +15,9 @@ export default function SpaceDetailPage() {
   const space = spaces.find((s) => s.id === spaceId);
 
   const [activeImage, setActiveImage] = useState(0);
-  const [visibleSections, setVisibleSections] = useState<string[]>([]);
+  const [lightbox, setLightbox] = useState<number | null>(null);
 
-  if (!space) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header variant="light" />
-        <div className="pt-32 pb-16 text-center">
-          <h1 className="font-serif text-4xl font-bold mb-4">Space Not Found</h1>
-          <Link href="/projects" className="text-accent hover:underline">
-            Back
-          </Link>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+  if (!space) return null;
 
   const nextSpace = spaces.find((s) => s.id === spaceId + 1) || spaces[0];
   const prevSpace =
@@ -39,83 +26,85 @@ export default function SpaceDetailPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header variant="light" />
+      <Header />
 
-      {/* Hero */}
+      {/* HERO */}
       <section className="pt-32 pb-16 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back
+          <Link href="/projects" className="flex items-center gap-2 mb-6">
+            <ArrowLeft className="w-4 h-4" /> Back
           </Link>
 
           <span className="text-accent text-sm tracking-[0.3em] uppercase block mb-4">
             {space.category}
           </span>
+
           <h1 className="font-serif text-5xl lg:text-7xl font-bold">
             {space.title}
           </h1>
         </div>
       </section>
 
-      {/* Main Image */}
-      <section className="py-16">
+      {/* MAIN IMAGE */}
+      <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 relative aspect-[16/10] overflow-hidden">
-              <img
+          <div
+            className="w-full bg-white rounded-xl shadow-lg p-8 cursor-pointer"
+            onClick={() => setLightbox(activeImage)}
+          >
+            <div className="relative w-full h-[520px]">
+              <Image
                 src={space.images[activeImage].src}
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                className="object-contain"
               />
             </div>
+          </div>
 
-            {/* Thumbnails */}
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-              {space.images.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveImage(index)}
-                  className={cn(
-                    "relative aspect-[4/3] overflow-hidden",
-                    index === activeImage && "ring-2 ring-accent"
-                  )}
-                >
-                  <img
-                    src={image.src}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
+          {/* THUMBNAILS */}
+          <div className="mt-12 flex gap-6 overflow-x-auto pb-4">
+            {space.images.map((img, i) => (
+              <div
+                key={i}
+                onClick={() => setActiveImage(i)}
+                className={`min-w-[140px] h-32 bg-white p-3 rounded-lg shadow cursor-pointer transition ${
+                  activeImage === i
+                    ? "ring-2 ring-accent scale-105"
+                    : "opacity-60 hover:opacity-100"
+                }`}
+              >
+                <div className="relative w-full h-full">
+                  <Image src={img.src} alt="" fill className="object-contain" />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Description & Features */}
-      <section className="py-16 border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-16">
+      {/* DESCRIPTION & FEATURES */}
+      <section className="py-24 border-t border-border">
+        <div className="container mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-20">
           <div>
-            <h2 className="font-serif text-3xl font-bold mb-6">
+            <h2 className="font-serif text-3xl font-bold mb-8">
               About This Space
             </h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               {space.fullDescription}
             </p>
-            <p className="text-muted-foreground">{space.description}</p>
+            <p className="text-muted-foreground leading-relaxed">
+              {space.description}
+            </p>
           </div>
 
           <div>
-            <h2 className="font-serif text-3xl font-bold mb-6">
+            <h2 className="font-serif text-3xl font-bold mb-8">
               Key Features
             </h2>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {space.features.map((f, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <li key={i} className="flex gap-3 items-start">
                   <CheckCircle className="w-5 h-5 text-accent mt-1" />
                   <span className="text-muted-foreground">{f}</span>
                 </li>
@@ -125,36 +114,77 @@ export default function SpaceDetailPage() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="py-16 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {space.images.map((img, i) => (
-            <div
-              key={i}
-              className="relative aspect-square overflow-hidden cursor-pointer"
-              onClick={() => setActiveImage(i)}
-            >
-              <img
-                src={img.src}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          ))}
+      {/* GALLERY GRID */}
+      <section className="py-28 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="font-serif text-4xl font-bold mb-20 text-center">
+            Space Gallery
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {space.images.map((img, i) => (
+              <div
+                key={i}
+                onClick={() => setLightbox(i)}
+                className="bg-white p-6 rounded-xl shadow-lg cursor-pointer"
+              >
+                <div className="relative w-full h-[420px]">
+                  <Image
+                    src={img.src}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Navigation */}
-      <section className="py-16 border-t border-border">
+      {/* PREVIOUS / NEXT NAVIGATION */}
+      <section className="py-20 border-t border-border">
         <div className="container mx-auto px-4 lg:px-8 flex justify-between">
-          <Link href={`/projects/${prevSpace.id}`}>
-            ← {prevSpace.title}
+          <Link
+            href={`/projects/${prevSpace.id}`}
+            className="flex items-center gap-3 group"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition" />
+            <div>
+              <div className="text-sm text-muted-foreground">Previous</div>
+              <div className="font-serif text-xl">{prevSpace.title}</div>
+            </div>
           </Link>
-          <Link href={`/projects/${nextSpace.id}`}>
-            {nextSpace.title} →
+
+          <Link
+            href={`/projects/${nextSpace.id}`}
+            className="flex items-center gap-3 group"
+          >
+            <div className="text-right">
+              <div className="text-sm text-muted-foreground">Next</div>
+              <div className="font-serif text-xl">{nextSpace.title}</div>
+            </div>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
           </Link>
         </div>
       </section>
+
+      {/* LIGHTBOX */}
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center"
+          onClick={() => setLightbox(null)}
+        >
+          <div className="relative w-[90%] h-[85%]">
+            <Image
+              src={space.images[lightbox].src}
+              alt=""
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

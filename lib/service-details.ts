@@ -60,10 +60,10 @@ export const serviceDetails: Record<
     ],
 
     images: [
-      "/projects/res1.jpg",
-      "/projects/res2.jpg",
-      "/projects/res3.jpg",
-      "/projects/res4.jpg",
+      "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522158/WhatsApp_Image_2026-01-26_at_21.55.06_sl4yfj.jpg",
+      "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522158/WhatsApp_Image_2026-01-26_at_21.55.06_3_t7rz39.jpg",
+      "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522157/WhatsApp_Image_2026-01-26_at_21.55.05_jjun5j.jpg",
+      "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521887/WhatsApp_Image_2026-01-26_at_21.54.55_2_fa5rx0.jpg",
     ],
   },
 
@@ -100,10 +100,10 @@ export const serviceDetails: Record<
     ],
 
     images: [
-      "/projects/res1.jpg",
-      "/projects/res2.jpg",
-      "/projects/res3.jpg",
-      "/projects/res4.jpg",
+      "https://4.imimg.com/data4/VA/BV/MY-10683418/design-consultancy.jpg",
+      "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567967/WhatsApp_Image_2026-01-27_at_21.11.33_bczg9r.jpg",
+      "https://deltaasia.vn/wp-content/uploads/2018/10/LOGO-VUONG-TK-DV.jpg",
+      "https://cdn.devon-devon.filoblu.com/media/contentmanager/content/resized/767x/contentmanager/content/immagine_superiore_HP_767x518_mobile.jpg",
     ],
   },
   customFurniture: {
@@ -142,10 +142,10 @@ export const serviceDetails: Record<
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567966/WhatsApp_Image_2026-01-27_at_21.13.02_efxj2c.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522157/WhatsApp_Image_2026-01-26_at_21.55.06_1_tsfuy5.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522157/WhatsApp_Image_2026-01-26_at_21.55.05_2_xeg5ug.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522067/WhatsApp_Image_2026-01-26_at_21.55.04_3_gkswvr.jpg",
   ],
 },
 colorConsultancy: {
@@ -184,10 +184,10 @@ colorConsultancy: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://images.squarespace-cdn.com/content/v1/59c40c06f9a61ed5dde6dd9f/1604689155124-AXC1USSPCUHMP55QINVI/20200104-DSC_5840.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567953/WhatsApp_Image_2026-01-27_at_21.14.49_hrrttw.jpg",
+    "https://versastyledesign.ca/wp-content/uploads/2020/02/montreal-color-consultation-006.jpg",
+    
   ],
 },
 projectManagement: {
@@ -227,10 +227,9 @@ projectManagement: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567952/WhatsApp_Image_2026-01-27_at_21.16.59_phac9c.jpg",
+    "https://media.licdn.com/dms/image/v2/D4D12AQGgt9CmRA0FXA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1678262331169?e=2147483647&v=beta&t=FCjyNJSTI5PbVWpG_QepYQCY3f81Q16z1MresfcaqCg",
+   
   ],
 },
 spacePlanning: {
@@ -270,10 +269,9 @@ spacePlanning: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567952/WhatsApp_Image_2026-01-27_at_21.18.41_yocdsy.jpg",
+    "https://foyr.com/learn/wp-content/uploads/2021/10/definitive-guide-to-space-planning-in-interior-design.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYXeGrXT1XzwZsXmeiCA1IYkwafEcMXm1dw&s",
   ],
 },
 lightingDesign: {
@@ -310,10 +308,10 @@ lightingDesign: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTicq5YdImrMAJz4qYiXZBcZV4Wiy9ksKoA3w&s",
+    "https://ansainteriors.com/wp-content/uploads/2019/09/24.jpg",
+    "https://www.johncullenlighting.com/wp-content/uploads/2020/05/Cornwall-Terrace-17-LR-3-1024x683.jpg",
+    "https://decorious.com/public/blogs/March2023/principles-of-lighting-in-interior-design-.jpg",
   ],
 },
 
@@ -350,10 +348,10 @@ artProcurement: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567951/WhatsApp_Image_2026-01-27_at_21.21.08_xi43ib.jpg",
+    "https://static.wixstatic.com/media/b67f65_dfbfc10631bf429493e14bee85c54740~mv2.png/v1/fill/w_724,h_899,al_c,q_90,enc_avif,quality_auto/b67f65_dfbfc10631bf429493e14bee85c54740~mv2.png",
+    "https://www.sechristdesign.com/wp-content/themes/sda/assets/images/services/1.jpg",
+    
   ],
 },
 renovationRemodeling: {
@@ -391,10 +389,10 @@ renovationRemodeling: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567951/WhatsApp_Image_2026-01-27_at_21.22.23_okjazq.jpg",
+    "https://mccoymart.com/post/wp-content/uploads/13-Nov-24-Renovation-vs-remodeling1.jpg",
+    "https://i-media.vyaparify.com/vcards/blogs/117862/Renovation-and-remodeling.jpeg",
+    "https://www.planradar.com/wp-content/uploads/2020/01/remodeling-app.png",
   ],
 },
 stylingStaging: {
@@ -432,10 +430,10 @@ stylingStaging: {
   ],
 
   images: [
-    "/projects/res1.jpg",
-    "/projects/res2.jpg",
-    "/projects/res3.jpg",
-    "/projects/res4.jpg",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567951/WhatsApp_Image_2026-01-27_at_21.24.02_nqt8fx.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu3HLU9qCcO91KRwXVCe_j6yzgcWnNDUqX3A&s",
+    "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521897/WhatsApp_Image_2026-01-26_at_21.55.03_1_gftlav.jpg",
+    
   ],
 },
 

@@ -28,7 +28,7 @@ const services: {
     subtitle: "Aurenza Design Studio",
     description: "Complete home design solutions, from concept to execution.",
     image:
-      "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+      "/Reside.jpeg",
     features: [
       {
         text: "Specialized in",
@@ -55,7 +55,7 @@ const services: {
     subtitle: "Aurenza Design Studio",
     description: "Expert interior design consultation tailored to your space.",
     image:
-      "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+      "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567967/WhatsApp_Image_2026-01-27_at_21.11.33_bczg9r.jpg",
     features: [
       {
         text: "Expert advice for",
@@ -81,7 +81,7 @@ const services: {
   title: "Custom Furniture Design",
   subtitle: "Aurenza Design Studio",
   description: "Bespoke furniture pieces crafted to perfectly match your space and style.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567966/WhatsApp_Image_2026-01-27_at_21.13.02_efxj2c.jpg",
   features: [
     {
       text: "Tailor-made furniture for",
@@ -107,7 +107,7 @@ const services: {
   title: "Color Consultancy",
   subtitle: "Aurenza Design Studio",
   description: "Expert guidance to create the perfect color palette for your interiors.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567953/WhatsApp_Image_2026-01-27_at_21.14.49_hrrttw.jpg",
   features: [
     {
       text: "Personalized",
@@ -133,7 +133,7 @@ const services: {
   title: "Project Management",
   subtitle: "Aurenza Design Studio",
   description: "End-to-end coordination to ensure your interior projects are completed on time and within budget.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567952/WhatsApp_Image_2026-01-27_at_21.16.59_phac9c.jpg",
   features: [
     {
       text: "Seamless coordination between",
@@ -159,7 +159,7 @@ const services: {
   title: "Space Planning",
   subtitle: "Aurenza Design Studio",
   description: "Strategic space arrangement to enhance flow, comfort, and functionality.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567952/WhatsApp_Image_2026-01-27_at_21.18.41_yocdsy.jpg",
   features: [
     {
       text: "Optimize every",
@@ -185,7 +185,7 @@ const services: {
   title: "Lighting Design",
   subtitle: "Aurenza Design Studio",
   description: "Strategic lighting solutions to enhance ambiance, functionality, and aesthetics.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567952/WhatsApp_Image_2026-01-27_at_21.20.08_h2kejg.jpg",
   features: [
     {
       text: "Balanced",
@@ -211,7 +211,7 @@ const services: {
   title: "Art and Accessory Procurement",
   subtitle: "Aurenza Design Studio",
   description: "Curated art and accessories to personalize and elevate your interiors.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567951/WhatsApp_Image_2026-01-27_at_21.21.08_xi43ib.jpg",
   features: [
     {
       text: "Source",
@@ -237,7 +237,7 @@ const services: {
   title: "Renovation and Remodeling",
   subtitle: "Aurenza Design Studio",
   description: "Transforming existing spaces into modern, functional, and beautiful environments.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567951/WhatsApp_Image_2026-01-27_at_21.22.23_okjazq.jpg",
   features: [
     {
       text: "Upgrade your space with",
@@ -263,7 +263,7 @@ const services: {
   title: "Styling and Staging",
   subtitle: "Aurenza Design Studio",
   description: "Professional styling and staging to create inviting, market-ready interiors.",
-  image: "https://harikrushnapattani.com/wp-content/uploads/2025/03/1-1.jpg",
+  image: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769567951/WhatsApp_Image_2026-01-27_at_21.24.02_nqt8fx.jpg",
   features: [
     {
       text: "Enhance",
@@ -331,13 +331,12 @@ return (
       >
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent z-10" />
-
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          className="object-cover scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
-        />
+<Image
+  src={service.image}
+  alt={service.title}
+  fill
+  className="object-contain transition-transform duration-1000 ease-out group-hover:scale-105"
+/>
 
         {/* Service number badge */}
         <div className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs tracking-widest font-semibold shadow">
@@ -405,7 +404,7 @@ return (
 export default function ServicesClient() {
   return (
     <div className="min-h-screen bg-background">
-      <Header variant="light" />
+      <Header />
 
       <section className="container mx-auto px-6">
         {services.map((service, index) => (

@@ -12,13 +12,13 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["Plot No. 123, Banjara Hills,", "Hyderabad, Telangana - 500034"],
+    details: ["Jubilee enclave,Hitec city,", "Hyderabad, Telangana - 500081"],
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+91 851198 07011"],
-    links: ["tel:851198 07011"],
+    details: ["+91 85198 07011"],
+    links: ["tel:85198 07011"],
   },
   {
     icon: Mail,
@@ -93,7 +93,7 @@ ${message}
 
   return (
     <div className="min-h-screen bg-primary text-primary-foreground">
-      <Header variant="transparent" />
+      <Header  />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">

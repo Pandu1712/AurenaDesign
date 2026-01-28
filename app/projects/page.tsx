@@ -11,6 +11,7 @@ import { spaces, categories } from "@/lib/projects-data";
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visible, setVisible] = useState<number[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   const filteredSpaces =
     activeCategory === "All"
@@ -19,32 +20,56 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header variant="light" />
+      <Header />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-secondary text-center">
+      <section className="pt-24 lg:pt-28 pb-16 bg-secondary text-center">
         <h1 className="font-serif text-5xl lg:text-7xl font-bold">
           Interior Spaces
         </h1>
       </section>
 
       {/* Filter */}
-      <section className="py-8 border-b border-border sticky top-20 bg-background z-30">
-        <div className="container mx-auto px-4 flex flex-wrap gap-4">
-          {categories.map((c) => (
+      <section className="py-6 border-b border-border sticky top-16 lg:top-20 bg-background z-30">
+        <div className="container mx-auto px-4">
+
+          {/* Mobile Toggle */}
+          <div className="flex justify-between items-center lg:hidden mb-4">
+            <h3 className="text-sm uppercase font-medium">Categories</h3>
             <button
-              key={c}
-              onClick={() => setActiveCategory(c)}
-              className={cn(
-                "px-6 py-2 text-sm uppercase",
-                activeCategory === c
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary"
-              )}
+              onClick={() => setShowFilters(!showFilters)}
+              className="text-accent text-sm uppercase"
             >
-              {c}
+              {showFilters ? "Close" : "Filters"}
             </button>
-          ))}
+          </div>
+
+          {/* Categories */}
+          <div
+            className={cn(
+              "flex flex-wrap gap-4 transition-all duration-300 overflow-hidden",
+              showFilters ? "max-h-96" : "max-h-0 lg:max-h-full",
+              "lg:max-h-full"
+            )}
+          >
+            {categories.map((c) => (
+              <button
+                key={c}
+                onClick={() => {
+                  setActiveCategory(c);
+                  setShowFilters(false);
+                }}
+                className={cn(
+                  "px-5 py-2 text-sm uppercase border transition-colors",
+                  activeCategory === c
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-secondary border-border"
+                )}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -98,7 +123,7 @@ function Card({ space, index, onVisible, isVisible }: CardProps) {
       style={{ transitionDelay: `${index * 0.1}s` }}
     >
       <Link href={`/projects/${space.id}`}>
-        <div className="relative aspect-[4/5] overflow-hidden mb-4">
+        <div className="relative aspect-[4/5] overflow-hidden mb-4 rounded-lg">
           <img
             src={space.images[0].src}
             alt={space.title}
