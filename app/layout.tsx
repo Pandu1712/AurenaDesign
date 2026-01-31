@@ -8,6 +8,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: '--font-playfair'
 });
+
 const inter = Inter({ 
   subsets: ["latin"],
   variable: '--font-inter'
@@ -17,6 +18,11 @@ export const metadata: Metadata = {
   title: 'Aurenza Design Studio',
   description: 'Premium Interior Design Studio - Transforming Spaces into Masterpieces',
   generator: 'v0.app',
+  icons: {
+    icon: '/logo1.png',
+    shortcut: '/logo1.png',
+    apple: '/logo1.png',
+  },
 }
 
 export default function RootLayout({
