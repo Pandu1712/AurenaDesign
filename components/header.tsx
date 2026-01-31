@@ -28,11 +28,7 @@ export default function Header() {
   }, []);
 
   const isLanding = pathname === "/";
-
-  // KEY FIX: if menu open → force white header
-  const isTransparent =
-    isLanding && !isScrolled && !isMobileMenuOpen;
-
+  const isTransparent = isLanding && !isScrolled && !isMobileMenuOpen;
   const textColor = isTransparent ? "text-white" : "text-black";
 
   return (
@@ -45,25 +41,24 @@ export default function Header() {
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-24">
-          
+        {/* Increased header height for premium spacing */}
+        <div className="flex items-center justify-between h-20 lg:h-28">
+
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div
               className={cn(
                 "relative transition-all duration-300",
-                // Large logo only on landing + not scrolled
-                isTransparent
-                  ? "h-14 w-44 lg:h-20 lg:w-64"
-                  : "h-10 w-32 lg:h-14 lg:w-40"
+                isTransparent ? "h-16 lg:h-20" : "h-12 lg:h-14"
               )}
             >
               <Image
                 src="/logo1.png"
                 alt="Aurenza Design Studio"
-                fill
+                width={220}
+                height={80}
                 priority
-                className="object-contain"
+                className="h-full w-auto object-contain"
               />
             </div>
           </Link>
