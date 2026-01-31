@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   description: 'Premium Interior Design Studio - Transforming Spaces into Masterpieces',
   generator: 'v0.app',
   icons: {
-    icon: '/logo1.png',
-    shortcut: '/logo1.png',
-    apple: '/logo1.png',
+    icon: '/Logo1.png',
+    shortcut: '/Logo1.png',
+    apple: '/Logo1.png',
   },
 }
 

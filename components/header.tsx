@@ -53,7 +53,7 @@ export default function Header() {
               )}
             >
               <Image
-                src="/logo1.png"
+                src="/Logo1.png"
                 alt="Aurenza Design Studio"
                 width={220}
                 height={80}
