@@ -742,8 +742,8 @@ Message: ${message}`;
 
           <div>
             <div className="text-sm text-white/60 uppercase">Phone</div>
-            <a href="tel:+918341012026" className="hover:text-accent">
-              +91 83410 12026
+            <a href="tel:+918519807011" className="hover:text-accent">
+              +91 85198 07011
             </a>
           </div>
 

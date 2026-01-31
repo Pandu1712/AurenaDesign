@@ -14,83 +14,90 @@ export default function SpaceDetailPage() {
   const spaceId = Number(params.id);
   const space = spaces.find((s) => s.id === spaceId);
 
-  const [activeImage, setActiveImage] = useState(0);
+  const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   if (!space) return null;
 
-  const nextSpace = spaces.find((s) => s.id === spaceId + 1) || spaces[0];
-  const prevSpace =
-    spaces.find((s) => s.id === spaceId - 1) ||
-    spaces[spaces.length - 1];
+  const nextImage = () =>
+    setIndex((prev) => (prev + 1) % space.images.length);
+  const prevImage = () =>
+    setIndex((prev) =>
+      prev === 0 ? space.images.length - 1 : prev - 1
+    );
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* HERO */}
-      <section className="pt-32 pb-16 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Link href="/projects" className="flex items-center gap-2 mb-6">
-            <ArrowLeft className="w-4 h-4" /> Back
-          </Link>
+      {/* TITLE */}
+      <section className="pt-28 pb-10 text-center bg-secondary">
+        <Link href="/projects" className="inline-flex items-center gap-2 mb-6">
+          <ArrowLeft className="w-4 h-4" /> Back to Projects
+        </Link>
 
-          <span className="text-accent text-sm tracking-[0.3em] uppercase block mb-4">
-            {space.category}
-          </span>
+        <span className="text-accent text-sm tracking-[0.3em] uppercase block mb-4">
+          {space.category}
+        </span>
 
-          <h1 className="font-serif text-5xl lg:text-7xl font-bold">
-            {space.title}
-          </h1>
+        <h1 className="font-serif text-4xl lg:text-6xl font-bold">
+          {space.title}
+        </h1>
+      </section>
+
+      {/* RESPONSIVE CAROUSEL (NO CROP, CONTROLLED SIZE) */}
+   <section className="relative w-full py-10 group overflow-hidden">
+
+        <div className="relative w-full flex items-center justify-center max-h-[70vh] bg-secondary">
+
+          <Image
+            src={space.images[index].src}
+            alt=""
+            width={1400}
+            height={900}
+            className="max-h-[70vh] w-auto object-contain cursor-pointer"
+            onClick={() => setLightbox(index)}
+            priority
+          />
+        </div>
+
+        {/* Arrows */}
+        <button
+          onClick={prevImage}
+          className="absolute left-6 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full"
+        >
+          <ArrowLeft />
+        </button>
+
+        <button
+          onClick={nextImage}
+          className="absolute right-6 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full"
+        >
+          <ArrowRight />
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {space.images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-2.5 h-2.5 rounded-full ${
+                index === i ? "bg-accent scale-125" : "bg-white/60"
+              }`}
+            />
+          ))}
         </div>
       </section>
 
-      {/* MAIN IMAGE */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div
-            className="w-full bg-white rounded-xl shadow-lg p-8 cursor-pointer"
-            onClick={() => setLightbox(activeImage)}
-          >
-            <div className="relative w-full h-[520px]">
-              <Image
-                src={space.images[activeImage].src}
-                alt=""
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-
-          {/* THUMBNAILS */}
-          <div className="mt-12 flex gap-6 overflow-x-auto pb-4">
-            {space.images.map((img, i) => (
-              <div
-                key={i}
-                onClick={() => setActiveImage(i)}
-                className={`min-w-[140px] h-32 bg-white p-3 rounded-lg shadow cursor-pointer transition ${
-                  activeImage === i
-                    ? "ring-2 ring-accent scale-105"
-                    : "opacity-60 hover:opacity-100"
-                }`}
-              >
-                <div className="relative w-full h-full">
-                  <Image src={img.src} alt="" fill className="object-contain" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DESCRIPTION & FEATURES */}
-      <section className="py-24 border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-20">
+      {/* ABOUT & FEATURES */}
+      <section className="py-20 border-t border-border">
+        <div className="container mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-16">
           <div>
-            <h2 className="font-serif text-3xl font-bold mb-8">
+            <h2 className="font-serif text-3xl font-bold mb-6">
               About This Space
             </h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               {space.fullDescription}
             </p>
             <p className="text-muted-foreground leading-relaxed">
@@ -99,10 +106,10 @@ export default function SpaceDetailPage() {
           </div>
 
           <div>
-            <h2 className="font-serif text-3xl font-bold mb-8">
+            <h2 className="font-serif text-3xl font-bold mb-6">
               Key Features
             </h2>
-            <ul className="space-y-5">
+            <ul className="space-y-4">
               {space.features.map((f, i) => (
                 <li key={i} className="flex gap-3 items-start">
                   <CheckCircle className="w-5 h-5 text-accent mt-1" />
@@ -115,67 +122,38 @@ export default function SpaceDetailPage() {
       </section>
 
       {/* GALLERY GRID */}
-      <section className="py-28 bg-secondary">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-serif text-4xl font-bold mb-20 text-center">
-            Space Gallery
+          <h2 className="font-serif text-4xl font-bold mb-12 text-center">
+            Gallery
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {space.images.map((img, i) => (
               <div
                 key={i}
                 onClick={() => setLightbox(i)}
-                className="bg-white p-6 rounded-xl shadow-lg cursor-pointer"
+                className="relative h-[360px] rounded-xl overflow-hidden cursor-pointer group"
               >
-                <div className="relative w-full h-[420px]">
-                  <Image
-                    src={img.src}
-                    alt=""
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+                <Image
+                  src={img.src}
+                  alt=""
+                  fill
+                  className="object-cover group-hover:scale-110 transition"
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PREVIOUS / NEXT NAVIGATION */}
-      <section className="py-20 border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8 flex justify-between">
-          <Link
-            href={`/projects/${prevSpace.id}`}
-            className="flex items-center gap-3 group"
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition" />
-            <div>
-              <div className="text-sm text-muted-foreground">Previous</div>
-              <div className="font-serif text-xl">{prevSpace.title}</div>
-            </div>
-          </Link>
-
-          <Link
-            href={`/projects/${nextSpace.id}`}
-            className="flex items-center gap-3 group"
-          >
-            <div className="text-right">
-              <div className="text-sm text-muted-foreground">Next</div>
-              <div className="font-serif text-xl">{nextSpace.title}</div>
-            </div>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
-          </Link>
-        </div>
-      </section>
-
       {/* LIGHTBOX */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center"
+          className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center"
           onClick={() => setLightbox(null)}
         >
-          <div className="relative w-[90%] h-[85%]">
+          <div className="relative w-[92%] h-[92%]">
             <Image
               src={space.images[lightbox].src}
               alt=""
