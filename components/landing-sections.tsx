@@ -6,6 +6,9 @@ import { ArrowRight, Award, Users, Home, Sparkles, Star, Quote, ChevronLeft, Che
 import { cn } from "@/lib/utils";
 import { Footer } from "react-day-picker";
 import Image from "next/image";
+import { spaces } from "@/lib/projects-data";
+
+
 
 // Hero Section
 export function HeroSection() {
@@ -406,27 +409,24 @@ return (
       </Link>
     </div>
 
-    {/* Projects Grid / Scroll */}
+    {/* Horizontal Scroll */}
     <div className="relative">
 
-      {/* Right fade indicator for mobile */}
-      <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-primary to-transparent z-10 lg:hidden" />
+      {/* Fade */}
+      <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-primary to-transparent z-10" />
 
-      <div
-        className="
-          flex gap-5 overflow-x-auto pb-4 scroll-smooth
-          lg:grid lg:grid-cols-3 xl:grid-cols-5 lg:gap-6 lg:overflow-visible
-        "
-      >
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
+      <div className="flex gap-6 overflow-x-auto pb-6 scroll-smooth scrollbar-hide">
+
+        {spaces.slice(0, 8).map((space, index) => (
+          <Link
+            key={space.id}
+            href={`/projects/${space.id}`}
             className={cn(
               "group relative overflow-hidden rounded-xl transition-all duration-700 hover:scale-[1.03]",
-              // Mobile size
-              "min-w-[70%] sm:min-w-[50%] h-[280px] sm:h-[320px]",
-              // Desktop size
-              "lg:min-w-0 lg:h-auto lg:aspect-[3/4]",
+              // 👇 SMALLER WIDTHS
+              "min-w-[65%] sm:min-w-[45%] md:min-w-[32%] lg:min-w-[22%] xl:min-w-[18%]",
+              // 👇 SMALLER HEIGHTS
+              "h-[240px] sm:h-[280px] lg:h-[340px]",
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
@@ -435,8 +435,8 @@ return (
           >
             {/* Image */}
             <Image
-              src={project.image}
-              alt={project.title}
+              src={space.images[0].src}
+              alt={space.title}
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-700"
             />
@@ -445,26 +445,30 @@ return (
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
             {/* Content */}
-            <div className="absolute inset-0 p-5 flex flex-col justify-end">
+            <div className="absolute inset-0 p-4 flex flex-col justify-end">
               <span className="text-accent text-xs tracking-wider uppercase mb-1">
-                {project.category}
+                {space.category}
               </span>
 
-              <h3 className="font-serif text-lg sm:text-xl font-semibold text-white">
-                {project.title}
+              <h3 className="font-serif text-lg font-semibold text-white">
+                {space.title}
               </h3>
 
-              <div className="mt-3 flex items-center gap-2 text-white/70 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-3 group-hover:translate-y-0">
-                <span className="text-sm">Project Preview</span>
+              <div className="mt-2 flex items-center gap-2 text-white/70 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-3 group-hover:translate-y-0">
+                <span className="text-xs">Project Preview</span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
+
       </div>
     </div>
 
   </div>
 </section>
+
+
+
 
 
 );
@@ -497,23 +501,66 @@ export function ReviewsSection() {
 
   const reviews = [
     {
-      name: "Priya Sharma",
-      role: "Homeowner",
-      content: "Aurenza transformed our home beyond our wildest dreams. Their attention to detail and creative vision brought our space to life.",
-      rating: 5,
-    },
-    {
-      name: "Rajesh Kumar",
-      role: "Business Owner",
-      content: "The team designed our office space with incredible professionalism. Our employees love the new environment!",
-      rating: 5,
-    },
-    {
-      name: "Ananya Reddy",
-      role: "Property Developer",
-      content: "Working with Aurenza has been a game-changer for our projects. Their designs consistently exceed expectations.",
-      rating: 5,
-    },
+  name: "Srinivas Rao",
+  role: "Villa Owner",
+  content: "The design approach was thoughtful and elegant. Every corner of our villa now reflects warmth and sophistication.",
+  rating: 5,
+},
+{
+  name: "Lakshmi Narayanan",
+  role: "Apartment Owner",
+  content: "They utilized our space brilliantly. Storage, lighting, and aesthetics are perfectly balanced throughout the home.",
+  rating: 5,
+},
+{
+  name: "Haritha Devi",
+  role: "Homeowner",
+  content: "From concept to execution, the team ensured our home interiors felt luxurious yet comfortable for daily living.",
+  rating: 5,
+},
+{
+  name: "Venkatesh Iyer",
+  role: "Independent House Owner",
+  content: "Professional, creative, and detail-oriented. Our interiors now have a timeless and classy appeal.",
+  rating: 5,
+},
+{
+  name: "Swathi Ramesh",
+  role: "Duplex Owner",
+  content: "The color combinations and material selections completely elevated the look of our home. Truly impressive work.",
+  rating: 5,
+},
+{
+  name: "Karthikeya Varma",
+  role: "Homeowner",
+  content: "They understood our lifestyle needs and translated them beautifully into the interior design of our house.",
+  rating: 5,
+},
+{
+  name: "Divya Suresh",
+  role: "Flat Owner",
+  content: "Our compact flat now feels spacious and elegant thanks to their smart layout planning and décor choices.",
+  rating: 5,
+},
+{
+  name: "Raghavendra Prasad",
+  role: "Villa Owner",
+  content: "The attention to detailing in false ceiling, lighting, and furniture placement is simply outstanding.",
+  rating: 5,
+},
+{
+  name: "Meenakshi Pillai",
+  role: "Homeowner",
+  content: "Every room in our house tells a story now. The team’s design vision brought harmony to the entire space.",
+  rating: 5,
+},
+{
+  name: "Arjun Reddy",
+  role: "Apartment Owner",
+  content: "Elegant designs, timely delivery, and flawless execution. Our home looks straight out of a design magazine.",
+  rating: 5,
+},
+
   ];
 
   const nextReview = () => setActiveReview((prev) => (prev + 1) % reviews.length);
@@ -703,10 +750,10 @@ Message: ${message}`;
           <div>
             <div className="text-sm text-white/60 uppercase">Email</div>
             <a
-              href="mailto:saisumanth2310@gmail.com"
+              href="mailto: aurenzadesignstudio@gmail.com"
               className="hover:text-accent"
             >
-              saisumanth2310@gmail.com
+               aurenzadesignstudio@gmail.com
             </a>
           </div>
         </div>

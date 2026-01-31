@@ -28,34 +28,38 @@ export default function Header() {
   }, []);
 
   const isLanding = pathname === "/";
-const getNavTextColor = () => {
-  // Desktop only logic
-  if (isLanding && !isScrolled) {
-    return "lg:text-white";
-  }
-  return "lg:text-black";
-};
+
+  // KEY FIX: if menu open → force white header
+  const isTransparent =
+    isLanding && !isScrolled && !isMobileMenuOpen;
+
+  const textColor = isTransparent ? "text-white" : "text-black";
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        // Mobile always white
-        "bg-white shadow-sm",
-        // Desktop transparent only on landing and not scrolled
-        "lg:bg-transparent lg:shadow-none",
-        isLanding && !isScrolled && "lg:bg-transparent",
-        (!isLanding || isScrolled) && "lg:bg-white lg:shadow-sm"
+        isTransparent
+          ? "bg-transparent shadow-none"
+          : "bg-white shadow-sm"
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-24">
           
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative h-10 w-32 sm:h-12 sm:w-40">
+            <div
+              className={cn(
+                "relative transition-all duration-300",
+                // Large logo only on landing + not scrolled
+                isTransparent
+                  ? "h-14 w-44 lg:h-20 lg:w-64"
+                  : "h-10 w-32 lg:h-14 lg:w-40"
+              )}
+            >
               <Image
-                src="/logo.jpeg"
+                src="/logo1.png"
                 alt="Aurenza Design Studio"
                 fill
                 priority
@@ -65,11 +69,12 @@ const getNavTextColor = () => {
           </Link>
 
           {/* Desktop Nav */}
-         <nav className={cn(
-  "hidden lg:flex items-center gap-8 text-sm font-medium uppercase",
-  getNavTextColor()
-)}>
-
+          <nav
+            className={cn(
+              "hidden lg:flex items-center gap-10 text-sm font-medium uppercase transition-colors",
+              textColor
+            )}
+          >
             {navLinks.map((l) => (
               <Link
                 key={l.href}
@@ -85,9 +90,14 @@ const getNavTextColor = () => {
           </nav>
 
           {/* Phone (desktop) */}
-          <div className="hidden lg:flex items-center gap-2 text-white">
+          <div
+            className={cn(
+              "hidden lg:flex items-center gap-2 transition-colors",
+              textColor
+            )}
+          >
             <Phone className="w-4 h-4" />
-            <a href="tel:+8519807011" className="hover:text-accent">
+            <a href="tel:+918519807011" className="hover:text-accent">
               +91 85198 07011
             </a>
           </div>
@@ -98,9 +108,9 @@ const getNavTextColor = () => {
             className="lg:hidden p-2"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-black" />
+              <X className={textColor} />
             ) : (
-              <Menu className="w-6 h-6 text-black" />
+              <Menu className={textColor} />
             )}
           </button>
         </div>
@@ -109,11 +119,11 @@ const getNavTextColor = () => {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden bg-white border-t transition-all duration-300 overflow-hidden",
-          isMobileMenuOpen ? "max-h-[500px]" : "max-h-0"
+          "lg:hidden transition-all duration-300 overflow-hidden bg-white",
+          isMobileMenuOpen ? "max-h-[500px] border-t" : "max-h-0"
         )}
       >
-        <nav className="flex flex-col px-6 py-4 gap-4 text-sm uppercase">
+        <nav className="flex flex-col px-6 py-4 gap-4 text-sm uppercase text-black">
           {navLinks.map((l) => (
             <Link
               key={l.href}
@@ -130,7 +140,7 @@ const getNavTextColor = () => {
 
           <div className="flex items-center gap-2 pt-4">
             <Phone className="w-4 h-4" />
-            <a href="tel:+918519807011">+91 851980 7011</a>
+            <a href="tel:+918519807011">+91 85198 07011</a>
           </div>
         </nav>
       </div>

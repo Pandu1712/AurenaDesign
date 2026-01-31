@@ -38,7 +38,7 @@ export const spaces: Space[] = [
     features: ["Soft close cabinets", "Pantry unit", "Quartz top"],
     color: "from-amber-500/30",
     images: [
-  { src: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769522157/WhatsApp_Image_2026-01-26_at_21.55.06_1_tsfuy5.jpg", title: "Kitchen 1", description: "Modern kitchen" },
+  { src: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769572479/WhatsApp_Image_2026-01-27_at_21.58.03_1_wbvqcf.jpg", title: "Kitchen 1", description: "Modern kitchen" },
   { src: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521897/WhatsApp_Image_2026-01-26_at_21.55.03_2_mvrphc.jpg", title: "Kitchen 2", description: "Cabinet layout" },
   { src: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521898/WhatsApp_Image_2026-01-26_at_21.55.04_1_mv9cyh.jpg", title: "Kitchen 3", description: "Countertop" },
   { src: "https://res.cloudinary.com/dgm3hnkfs/image/upload/v1769521896/WhatsApp_Image_2026-01-26_at_21.55.01_umypgp.jpg", title: "Kitchen 4", description: "Pantry unit" },

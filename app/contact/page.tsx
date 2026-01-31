@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: [" saisumanth2310@gmail.com"],
-    links: ["mailto: saisumanth2310@gmail.com"],
+    details: ["  aurenzadesignstudio@gmail.com"],
+    links: ["mailto:  aurenzadesignstudio@gmail.com"],
   },
   {
     icon: Clock,
